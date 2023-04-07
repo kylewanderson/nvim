@@ -1,0 +1,39 @@
+-- Install package manager
+--    https://github.com/folke/lazy.nvim
+--    `:help lazy.nvim.txt` for more info
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+	require("kyle.themes"),
+	require("kyle.git-configs"),
+	require("kyle.copilot"),
+	require("kyle.toggleterm"),
+	require("kyle.lualine"),
+	require("kyle.comments"),
+	require("kyle.formatting"),
+	require("kyle.telescope"),
+	require("kyle.treesitter"),
+	require("kyle.lsp"),
+	require("kyle.fun"),
+	require("kyle.snip"),
+
+	-- Navigation
+	--
+	"tpope/vim-vinegar",
+
+	-- NOTE: This is where your plugins related to LSP can be installed.
+	--  The configuration is done below. Search for lspconfig to find it below.
+	-- Useful plugin to show you pending keybinds.
+	{ "folke/which-key.nvim", opts = {} },
+}, {})
