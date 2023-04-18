@@ -27,6 +27,7 @@ require("lazy").setup({
 	require("kyle.lsp"),
 	require("kyle.fun"),
 	require("kyle.snip"),
+	require("kyle.flutter-tools"),
 
 	-- Navigation
 	--
