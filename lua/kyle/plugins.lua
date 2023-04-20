@@ -17,7 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	require("kyle.themes"),
 	require("kyle.git-configs"),
-	require("kyle.copilot"),
+	-- require("kyle.copilot"),
+	require("kyle.tabnine"),
 	require("kyle.toggleterm"),
 	require("kyle.lualine"),
 	require("kyle.comments"),
