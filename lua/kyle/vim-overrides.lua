@@ -77,13 +77,3 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 		end
 	end,
 })
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-	callback = function(_)
-		-- this line will disble auto commenting
-		-- vim.cmd("set fo-=c fo-=r fo-=o")
-
-		-- this line will disble the auto commenting on o and O
-		vim.cmd("set fo-=o")
-	end,
-})
