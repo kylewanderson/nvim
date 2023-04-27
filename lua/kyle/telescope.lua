@@ -77,13 +77,13 @@ return {
 			)
 			vim.keymap.set("n", "<leader>sl", function()
 				require("telescope.builtin").live_grep({
-					cwd = "~/AppData/nvim",
+					cwd = "C:\\Users\\j6371\\AppData\\nvim",
 				})
 			end, { desc = "[S]earch [L]SP symbols" })
 
 			vim.keymap.set("n", "<leader>fl", function()
 				require("telescope.builtin").find_files({
-					cwd = "~/AppData/nvim",
+					cwd = "c:\\Users\\j6371\\AppData\\nvim",
 				})
 			end, { desc = "[S]earch [L]SP symbols" })
 		end,
