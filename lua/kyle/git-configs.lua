@@ -3,6 +3,7 @@ return {
 		"tpope/vim-fugitive",
 		config = function()
 			vim.api.nvim_create_user_command("Glme", "Git log -- %", {})
+
 			vim.api.nvim_create_user_command("G", function(args)
 				local vimCmd = "vertical Git"
 				if args["args"] then
@@ -10,6 +11,15 @@ return {
 				end
 				vim.cmd(vimCmd)
 			end, { desc = "Open Git vertically", nargs = "*" })
+
+			vim.api.nvim_create_user_command("Gc", function(args)
+				local vimCmd = "Git checkout"
+				if args["args"] then
+					vimCmd = vimCmd .. " " .. args["args"]
+				end
+				vim.cmd(vimCmd)
+			end, { desc = "Shorthand for git checkout", nargs = "*" })
+
 			vim.keymap.set(
 				"n",
 				"gl",
