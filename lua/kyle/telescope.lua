@@ -1,3 +1,4 @@
+local macUnix = vim.fn.has("macunix") == 1
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -77,13 +78,13 @@ return {
 			)
 			vim.keymap.set("n", "<leader>sl", function()
 				require("telescope.builtin").live_grep({
-					cwd = "C:\\Users\\j6371\\AppData\\nvim",
+					cwd = macUnix and "~/.config/nvim" or "~/AppData/Local/nvim",
 				})
 			end, { desc = "[S]earch [L]SP symbols" })
 
 			vim.keymap.set("n", "<leader>fl", function()
 				require("telescope.builtin").find_files({
-					cwd = "c:\\Users\\j6371\\AppData\\nvim",
+					cwd = macUnix and "~/.config/nvim" or "~/AppData/Local/nvim",
 				})
 			end, { desc = "[S]earch [L]SP symbols" })
 		end,
