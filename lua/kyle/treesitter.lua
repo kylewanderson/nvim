@@ -23,7 +23,7 @@ return {
 					"java",
 					"tsx",
 					"typescript",
-					"help",
+					"vimdoc",
 					"vim",
 					"markdown",
 				},
@@ -55,13 +55,6 @@ return {
 
 				highlight = { enable = true },
 
-				-- yati = {
-				--   enable = true,
-				--   disable = { 'python' },
-				--   default_lazy = true,
-				--   default_fallback = "auto",
-				-- },
-				--
 				indent = { enable = true, disable = { "python" } },
 
 				incremental_selection = {
