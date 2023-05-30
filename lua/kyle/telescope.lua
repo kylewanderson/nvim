@@ -24,6 +24,8 @@ return {
 			-- Enable telescope fzf native, if installed
 			pcall(require("telescope").load_extension, "fzf")
 
+			vim.api.nvim_create_user_command("Gb", "Telescope git_branches", {})
+
 			-- See `:help telescope.builtin`
 			vim.keymap.set(
 				"n",

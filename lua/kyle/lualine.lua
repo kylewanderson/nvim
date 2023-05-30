@@ -6,7 +6,6 @@ return {
 		options = {
 			path = 1,
 			icons_enabled = false,
-			theme = "onedark",
 			component_separators = "|",
 			section_separators = "",
 		},
