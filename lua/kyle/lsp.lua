@@ -91,4 +91,14 @@ return {
 		},
 		config = lspConfig,
 	},
+	{
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({
+				default_mappings = true,
+				width = 120,
+				height = 30,
+			})
+		end,
+	},
 }

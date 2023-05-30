@@ -31,10 +31,11 @@ require("lazy").setup({
 	require("kyle.fun"),
 	require("kyle.snip"),
 	require("kyle.flutter-tools"),
+	require("kyle.oil"),
 
 	-- Navigation
 	--
-	"tpope/vim-vinegar",
+	-- "tpope/vim-vinegar",
 
 	-- NOTE: This is where your plugins related to LSP can be installed.
 	--  The configuration is done below. Search for lspconfig to find it below.
