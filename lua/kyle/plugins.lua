@@ -32,6 +32,8 @@ require("lazy").setup({
 	require("kyle.snip"),
 	require("kyle.flutter-tools"),
 	require("kyle.oil"),
+	require("kyle.colorizer"),
+	require("kyle.harpoon"),
 
 	-- Navigation
 	--
