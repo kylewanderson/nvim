@@ -12,7 +12,7 @@ return {
 		},
 	},
 	-- Detect tabstop and shiftwidth automatically
-	"tpope/vim-sleuth",
+	-- "tpope/vim-sleuth",
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = function()

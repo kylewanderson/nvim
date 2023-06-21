@@ -55,12 +55,12 @@ return {
 					changedelete = { text = "~" },
 				},
 			})
-			vim.keymap.set(
-				"n",
-				"<leader>gb",
-				":Gitsigns blame_line<CR>",
-				{ desc = "Blame line" }
-			)
+			-- vim.keymap.set(
+			-- 	"n",
+			-- 	"<leader>gb",
+			-- 	":Gitsigns blame_line<CR>",
+			-- 	{ desc = "Blame line" }
+			-- )
 			vim.keymap.set(
 				"n",
 				"<leader>gh",
@@ -99,8 +99,18 @@ return {
 			)
 			vim.keymap.set(
 				"n",
-				"<leader>gl",
-				":Gitsigns toggle_current_line_blame<CR>"
+				"<leader>gp",
+				":Git pull<CR>"
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>gP",
+				":Git push<CR>"
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>b",
+				":Telescope git_branches<CR>"
 			)
 		end,
 	},

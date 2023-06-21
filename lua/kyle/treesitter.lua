@@ -1,5 +1,7 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+local macUnix = vim.fn.has("macunix") == 1
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -9,7 +11,10 @@ return {
 		config = function()
 			pcall(
 				require("nvim-treesitter.install").update({ with_sync = true })
-			)
+      )
+      if not macUnix then
+        require 'nvim-treesitter.install'.compilers = { "zig" }
+      end
 			require("nvim-treesitter.configs").setup({
 				-- Add languages to be installed here that you want installed for treesitter
 				ensure_installed = {

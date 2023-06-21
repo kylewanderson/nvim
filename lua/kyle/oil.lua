@@ -8,6 +8,7 @@ return {
 				["-"] = "actions.parent",
 				["_"] = "actions.open_cwd",
 				["`"] = "actions.cd",
+				["cd"] = "actions.cd",
 				["~"] = "actions.tcd",
 				["g."] = "actions.toggle_hidden",
 			},
