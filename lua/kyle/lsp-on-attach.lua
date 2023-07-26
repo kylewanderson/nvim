@@ -52,7 +52,11 @@
 		nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 		nmap(
 			"gr",
-			require("telescope.builtin").lsp_references,
+      function ()
+        require("telescope.builtin").lsp_references({
+          fname_width = 1000
+        })
+      end,
 			"[G]oto [R]eferences"
 		)
 		nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")

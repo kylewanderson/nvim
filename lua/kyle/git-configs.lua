@@ -55,12 +55,12 @@ return {
 					changedelete = { text = "~" },
 				},
 			})
-			-- vim.keymap.set(
-			-- 	"n",
-			-- 	"<leader>gb",
-			-- 	":Gitsigns blame_line<CR>",
-			-- 	{ desc = "Blame line" }
-			-- )
+			vim.keymap.set(
+				"n",
+				"<leader>gb",
+				":Gitsigns blame_line<CR>",
+				{ desc = "Blame line" }
+			)
 			vim.keymap.set(
 				"n",
 				"<leader>gh",

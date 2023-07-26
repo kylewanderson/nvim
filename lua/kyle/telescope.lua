@@ -10,6 +10,13 @@ return {
 			require("telescope").setup({
 				defaults = {
 					file_ignore_patterns = { "node_modules" },
+          path_display = {
+            shorten = {
+              len = 1, exclude = {-1, -2, -3}
+            },
+            truncate = true,
+          },
+          dynamic_preview_title = true,
 					mappings = {
 						i = {
 							["<C-u>"] = false,
