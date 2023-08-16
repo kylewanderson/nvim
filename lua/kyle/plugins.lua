@@ -34,6 +34,9 @@ require("lazy").setup({
 	require("kyle.oil"),
 	require("kyle.colorizer"),
 	require("kyle.harpoon"),
+  require("kyle.nvim-bqf"),
+  require("kyle.treesj"),
+  require("kyle.nvim-surround"),
 
 	-- Navigation
 	--
