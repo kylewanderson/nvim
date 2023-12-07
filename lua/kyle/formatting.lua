@@ -1,16 +1,24 @@
 return {
 	-- mdx support
 	"jxnblk/vim-mdx-js",
-	{
-		-- Add indentation guides even on blank lines
-		"lukas-reineke/indent-blankline.nvim",
-		-- Enable `lukas-reineke/indent-blankline.nvim`
-		-- See `:help indent_blankline.txt`
-		opts = {
-			char = "┊",
-			show_trailing_blankline_indent = false,
-		},
-	},
+	-- {
+	-- 	-- Add indentation guides even on blank lines
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	-- Enable `lukas-reineke/indent-blankline.nvim`
+	-- 	-- See `:help indent_blankline.txt`
+	-- 	opts = {
+	-- 		char = "┊",
+	-- 		show_trailing_blankline_indent = false,
+	-- 	},
+	-- },
+  {
+    -- Add indentation guides even on blank lines
+    'lukas-reineke/indent-blankline.nvim',
+    -- Enable `lukas-reineke/indent-blankline.nvim`
+    -- See `:help ibl`
+    main = 'ibl',
+    opts = {},
+  },
 	-- Detect tabstop and shiftwidth automatically
 	-- "tpope/vim-sleuth",
 	{
