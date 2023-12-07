@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	require("kyle.themes"),
-	require("kyle.git-configs"),
 	-- require("kyle.copilot"),
 	require("kyle.tabnine"),
 	require("kyle.toggleterm"),
@@ -26,6 +25,7 @@ require("lazy").setup({
 	require("kyle.comments"),
 	require("kyle.formatting"),
 	require("kyle.telescope"),
+	require("kyle.git-configs"),
 	require("kyle.treesitter"),
 	require("kyle.lsp"),
 	require("kyle.fun"),
@@ -34,9 +34,10 @@ require("lazy").setup({
 	require("kyle.oil"),
 	require("kyle.colorizer"),
 	require("kyle.harpoon"),
-  require("kyle.nvim-bqf"),
-  require("kyle.treesj"),
-  require("kyle.nvim-surround"),
+	require("kyle.nvim-bqf"),
+	require("kyle.treesj"),
+	require("kyle.nvim-surround"),
+	require("kyle.trouble"),
 
 	-- Navigation
 	--
@@ -47,3 +48,4 @@ require("lazy").setup({
 	-- Useful plugin to show you pending keybinds.
 	{ "folke/which-key.nvim", opts = {} },
 }, {})
+
