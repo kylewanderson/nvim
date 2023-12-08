@@ -20,6 +20,7 @@ require("lazy").setup({
 	require("kyle.themes"),
 	-- require("kyle.copilot"),
 	require("kyle.tabnine"),
+	require("kyle.chatgpt"),
 	require("kyle.toggleterm"),
 	require("kyle.lualine"),
 	require("kyle.comments"),
