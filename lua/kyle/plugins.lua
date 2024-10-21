@@ -20,7 +20,7 @@ require("lazy").setup({
 	require("kyle.themes"),
 	-- require("kyle.copilot"),
 	require("kyle.tabnine"),
-	require("kyle.chatgpt"),
+	-- require("kyle.chatgpt"),
 	require("kyle.toggleterm"),
 	require("kyle.lualine"),
 	require("kyle.comments"),
@@ -39,6 +39,8 @@ require("lazy").setup({
 	require("kyle.treesj"),
 	require("kyle.nvim-surround"),
 	require("kyle.trouble"),
+	require("kyle.neotest"),
+	-- require("kyle.vim-test"),
 
 	-- Navigation
 	--

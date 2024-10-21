@@ -25,6 +25,7 @@ vim.keymap.set('t', '<C-a>', [[<C-\><C-n>]])
 vim.keymap.set("n", "<leader>so", ":so $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ev", ":tabedit $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>tq", ":tabclose<CR>")
+vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
