@@ -30,7 +30,9 @@ require("lazy").setup({
 	require("kyle.treesitter"),
 	require("kyle.lsp"),
 	require("kyle.fun"),
-	require("kyle.snip"),
+  require("kyle.blink-cmp"),
+  require("kyle.nvim-scissors"),
+	-- require("kyle.snip"),
 	require("kyle.flutter-tools"),
 	require("kyle.oil"),
 	require("kyle.colorizer"),
@@ -39,6 +41,8 @@ require("lazy").setup({
 	require("kyle.treesj"),
 	require("kyle.nvim-surround"),
 	require("kyle.trouble"),
+	require("kyle.neotest"),
+	-- require("kyle.vim-test"),
 
 	-- Navigation
 	--
@@ -49,4 +53,3 @@ require("lazy").setup({
 	-- Useful plugin to show you pending keybinds.
 	{ "folke/which-key.nvim", opts = {} },
 }, {})
-
