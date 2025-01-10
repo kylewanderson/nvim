@@ -13,10 +13,15 @@ return {
 				["g."] = "actions.toggle_hidden",
 			},
 			use_default_keymaps = false,
-      view_options = {
-        show_hidden = true,
-      }
+			view_options = {
+				show_hidden = true,
+			},
 		})
-		vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+		vim.keymap.set(
+			"n",
+			"-",
+			require("oil").open,
+			{ desc = "Open parent directory" }
+		)
 	end,
 }

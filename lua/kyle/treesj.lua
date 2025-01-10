@@ -1,3 +1,4 @@
+-- leader m command for formatting code blocks
 return {
   'Wansmer/treesj',
   keys = { '<leader>m', '<leader>j', '<leader>s' },
