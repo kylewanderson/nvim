@@ -17,11 +17,18 @@ return {
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     -- See the full "keymap" documentation for information on defining your own keymap.
+    completion = {
+      list = {
+        selection = {
+          preselect = false
+        }
+      }
+    },
     keymap = {
       preset = 'default',
       ['<C-k>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       ['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
-      -- ['<enter>'] = { 'select_and_accept', 'fallback' },
+      ['<enter>'] = { 'accept', 'fallback' },
     },
 
     appearance = {
