@@ -36,12 +36,12 @@ return {
 	},
 	"tommcdo/vim-fubitive",
 	"tpope/vim-rhubarb",
-	{
-		"kdheepak/lazygit.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>")
-		end,
-	},
+	-- {
+	-- 	"kdheepak/lazygit.nvim",
+	-- 	config = function()
+	-- 		vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>")
+	-- 	end,
+	-- },
 	{
 		-- Adds git releated signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",

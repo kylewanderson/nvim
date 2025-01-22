@@ -17,10 +17,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  require('kyle.mini'),
+  require('kyle.snacks'),
 	require("kyle.themes"),
-	-- require("kyle.copilot"),
-	require("kyle.tabnine"),
-	-- require("kyle.chatgpt"),
+	-- require("kyle.tabnine"),
+  require("kyle.avante"),
 	require("kyle.toggleterm"),
 	require("kyle.lualine"),
 	require("kyle.comments"),
@@ -32,24 +33,13 @@ require("lazy").setup({
 	require("kyle.fun"),
   require("kyle.blink-cmp"),
   require("kyle.nvim-scissors"),
-	-- require("kyle.snip"),
 	require("kyle.flutter-tools"),
 	require("kyle.oil"),
 	require("kyle.colorizer"),
 	require("kyle.harpoon"),
 	require("kyle.nvim-bqf"),
 	require("kyle.treesj"),
-	require("kyle.nvim-surround"),
 	require("kyle.trouble"),
-	require("kyle.neotest"),
-	-- require("kyle.vim-test"),
 
-	-- Navigation
-	--
-	-- "tpope/vim-vinegar",
-
-	-- NOTE: This is where your plugins related to LSP can be installed.
-	--  The configuration is done below. Search for lspconfig to find it below.
-	-- Useful plugin to show you pending keybinds.
 	{ "folke/which-key.nvim", opts = {} },
 }, {})

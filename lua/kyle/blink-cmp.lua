@@ -1,7 +1,15 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  -- dependencies = 'rafamadriz/friendly-snippets',
+  dependencies = {
+    -- 'rafamadriz/friendly-snippets',
+    {
+      'saghen/blink.compat',
+      --[[ opts = {
+        impersonate_nvim_cmp = true,
+      } ]]
+    }
+  },
 
   -- use a release tag to download pre-built binaries
   version = '*',
@@ -18,6 +26,10 @@ return {
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     -- See the full "keymap" documentation for information on defining your own keymap.
     completion = {
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 300,
+      },
       list = {
         selection = {
           preselect = false
@@ -26,6 +38,11 @@ return {
     },
     keymap = {
       preset = 'default',
+      ['<Up>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+      ['<Down>'] = { 'select_next', 'snippet_forward', 'fallback' },
+      ['<C-y>'] = { 'show', 'fallback' },
+      ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
       ['<C-k>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       ['<C-j>'] = { 'select_next', 'snippet_forward', 'fallback' },
       ['<enter>'] = { 'accept', 'fallback' },
@@ -44,7 +61,35 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = {
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+        "avante_commands",
+        "avante_mentions",
+        "avante_files",
+      },
+      providers = {
+        avante_commands = {
+          name = "avante_commands",
+          module = "blink.compat.source",
+          score_offset = 90, -- show at a higher priority than lsp
+          opts = {},
+        },
+        avante_files = {
+          name = "avante_commands",
+          module = "blink.compat.source",
+          score_offset = 100, -- show at a higher priority than lsp
+          opts = {},
+        },
+        avante_mentions = {
+          name = "avante_mentions",
+          module = "blink.compat.source",
+          score_offset = 1000, -- show at a higher priority than lsp
+          opts = {},
+        }
+      }
     },
   },
   opts_extend = { "sources.default" }

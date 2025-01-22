@@ -60,7 +60,6 @@ return {
         }):find()
       end
 
-			require("telescope").load_extension("lazygit")
 			local telescopeActions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
