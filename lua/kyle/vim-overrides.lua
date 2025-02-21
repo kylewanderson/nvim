@@ -1,4 +1,4 @@
-vim.opt.guifont = "Inconsolata LGC Nerd Font Mono"
+-- vim.opt.guifont Inconsolata LGC Nerd Font Mono= "Inconsolata LGC Nerd Font Mono"
 
 -- [[ Setting options ]]
 -- See `:help vim.o`

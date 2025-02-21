@@ -29,6 +29,7 @@ local lspConfig = function()
         },
       },
     },
+    angularls = {},
     lua_ls = {
       Lua = {
         workspace = { checkThirdParty = false },
@@ -46,6 +47,7 @@ local lspConfig = function()
 
   -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
   local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.foldingRange = {
   	dynamicRegistration = false,
@@ -67,8 +69,9 @@ local lspConfig = function()
   mason_lspconfig.setup_handlers({
     function(server_name)
       local server = servers[server_name] or {}
-      local blinkCapabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
-      server.capabilities = vim.tbl_deep_extend('force', capabilities, blinkCapabilities)
+      -- local blinkCapabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
+      -- server.capabilities = vim.tbl_deep_extend('force', capabilities, blinkCapabilities)
+      server.capabilities = capabilities
       server.on_attach = on_attach
       require("lspconfig")[server_name].setup(server)
     end,
@@ -129,6 +132,7 @@ return {
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { "j-hui/fidget.nvim", tag = 'legacy', opts = {} },
+      'hrsh7th/cmp-nvim-lsp',
 
       -- Additional lua configuration, makes nvim stuff amazing!
       "folke/neodev.nvim",

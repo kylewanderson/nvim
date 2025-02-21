@@ -5,16 +5,19 @@ return {
 		snippetDir = "snippets",
 	},
   config = function()
-    require("blink.cmp").setup {
-      sources = {
-        providers = {
-          snippets = {
-            opts = {
-              search_paths = { "snippets" },
-            },
-          }
-        }
-      }
+    -- require("blink.cmp").setup {
+    --   sources = {
+    --     providers = {
+    --       snippets = {
+    --         opts = {
+    --           search_paths = { "snippets" },
+    --         },
+    --       }
+    --     }
+    --   }
+    -- }
+    require('luasnip.loaders.from_vscode').lazy_load {
+      paths = { "snippets" }
     }
     vim.keymap.set(
       "n",

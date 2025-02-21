@@ -22,6 +22,8 @@ vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]])
 vim.keymap.set("n", "<leader>so", ":so $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>ev", ":tabedit $MYVIMRC<CR>")
 vim.keymap.set("n", "<leader>tq", ":tabclose<CR>")
+vim.keymap.set("n", "<leader>ll", ":tabNext<CR>")
+vim.keymap.set("n", "<leader>hh", ":tabprevious<CR>")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- use J and K to move visually selected lines
