@@ -19,6 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   require('kyle.mini'),
   require('kyle.snacks'),
+  require('kyle.noice'),
 	require("kyle.themes"),
 	-- require("kyle.tabnine"),
   require("kyle.avante"),

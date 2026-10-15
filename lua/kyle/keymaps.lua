@@ -66,9 +66,19 @@ vim.keymap.set(
 )
 vim.keymap.set(
 	"n",
-	"<leader>dl",
+	"<leader>da",
 	vim.diagnostic.setloclist,
-	{ desc = "Open diagnostics list" }
+	{ desc = "Open diagnostics list (all)" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>dl",
+  function()
+    vim.diagnostic.setloclist({
+      severity = { min = vim.diagnostic.severity.WARN }
+    })
+  end,
+	{ desc = "Open diagnostics list (warn+)" }
 )
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
