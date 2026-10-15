@@ -18,7 +18,7 @@ return {
         wo = { wrap = true } -- Wrap notifications
       }
     },
-    scroll = {},
+    -- scroll = {},
   },
   keys = {
     {

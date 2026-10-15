@@ -32,7 +32,9 @@ return {
       },
       list = {
         selection = {
-          preselect = false
+          --[[ preselect = function ()
+            return vim.fn.mode() ~= 'c'
+          end ]]
         }
       }
     },
@@ -91,6 +93,9 @@ return {
         }
       }
     },
+    cmdline = {
+      enabled = false,
+    }
   },
   opts_extend = { "sources.default" }
 };
