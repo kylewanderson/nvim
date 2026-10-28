@@ -36,6 +36,7 @@ local lspConfig = function()
       },
     },
     cssls = {},
+    angularls = {},
     html = {},
     jsonls = {},
     yamlls = {},
@@ -51,33 +52,32 @@ local lspConfig = function()
   	dynamicRegistration = false,
   	lineFoldingOnly = true,
   }
-  --
-  -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+  -- merge in blink.cmp's completion capabilities
+  capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
   -- Setup mason so it can manage external tooling
   require("mason").setup()
 
-  -- Ensure the servers above are installed
-  local mason_lspconfig = require("mason-lspconfig")
+  -- Configure each server via vim.lsp.config() instead of setup_handlers
+  for server_name, server_opts in pairs(servers) do
+    vim.lsp.config(server_name, vim.tbl_deep_extend("force", server_opts, {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }))
+  end
 
+  -- Ensure the servers above are installed, and auto-enable them
+  local mason_lspconfig = require("mason-lspconfig")
   mason_lspconfig.setup({
     ensure_installed = vim.tbl_keys(servers),
-  })
-
-  mason_lspconfig.setup_handlers({
-    function(server_name)
-      local server = servers[server_name] or {}
-      local blinkCapabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
-      server.capabilities = vim.tbl_deep_extend('force', capabilities, blinkCapabilities)
-      server.on_attach = on_attach
-      require("lspconfig")[server_name].setup(server)
-    end,
+    automatic_enable = true, -- calls vim.lsp.enable() for installed servers (this is also the default)
   })
 
   -- fold handler function for nvim-ufo
   local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
-    -- local suffix = ('  %d '):format(endLnum - lnum)
+    -- local suffix = ('  %d '):format(endLnum - lnum)
     local suffix = (' %d Lines '):format(endLnum - lnum)
     local sufWidth = vim.fn.strdisplaywidth(suffix)
     local targetWidth = width - sufWidth

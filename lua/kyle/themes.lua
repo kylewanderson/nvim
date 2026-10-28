@@ -34,6 +34,11 @@ return {
 		priority = 1000,
 		config = function()
 			require("tokyonight").setup({
+        on_highlights = function(hl, c)
+          hl.LineNr = { fg = c.yellow }
+          hl.LineNrAbove = { fg = c.blue }
+          hl.LineNrBelow = { fg = c.blue }
+        end,
 			})
 		  vim.cmd.colorscheme 'tokyonight-night'
 		end,
