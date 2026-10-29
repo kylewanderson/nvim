@@ -1,17 +1,12 @@
 return {
   "akinsho/toggleterm.nvim",
-  opts = {
-    open_mapping = "<C-x>",
-    direction = "float",
-  },
   config = function ()
     require("toggleterm").setup({
       open_mapping = "<C-x>",
       direction = "float",
+      border = "curved",
     })
 
-    -- Create a persistent global cache to hold onto terminal objects after they exit
-    _G.npm_terminal_cache = _G.npm_terminal_cache or {}
     local function run_npm_script()
       local pickers = require("telescope.pickers")
       local finders = require("telescope.finders")
@@ -56,7 +51,6 @@ return {
       end
       table.sort(script_names)
 
-      -- 5. Open Telescope picker
       pickers.new({}, {
         prompt_title = "Run Node Script (" .. manager .. ")",
         finder = finders.new_table({
@@ -72,20 +66,22 @@ return {
               -- Construct the terminal command string
               -- Append a read command so the shell process stays alive after completion
               local cmd = manager .. " run " .. script .. "; echo '\n[Process completed. Press Enter to exit terminal]'; read"
-              -- Use a standardized, predictable ID (e.g., 99) for scripts
-              local term_id = 99
+              local term_id = vim.api.nvim_get_vvar("count") == 0 and (100 + #require("toggleterm.terminal").get_all()) or nil
 
-              -- Create the terminal and store it permanently in our cache table
+              -- Check if a terminal running this exact script is already open
+              local active_terms = require("toggleterm.terminal").get_all()
+              for _, term in ipairs(active_terms) do
+                if term.cmd == cmd then
+                  term:toggle()
+                  return
+                end
+              end
+
               local node_task = Terminal:new({
                 id = term_id,
                 cmd = cmd,
                 direction = "float",
-                close_on_exit = true, -- Keeps the terminal buffer from being wiped out
-                on_close = function(term)
-                  if not vim.api.nvim_buf_is_valid(term.bufnr) then
-                    _G.npm_terminal_cache[term_id] = nil
-                  end
-                end,
+                close_on_exit = true,
               })
 
               node_task:toggle()
@@ -113,36 +109,22 @@ return {
       end
 
       -- Format the display string to show: "[ID] running_command"
-      -- 1. Grab all active, live terminals from ToggleTerm
-      local live_terms = toggleterm_terminal.get_all()
-      local uniquely_tracked = {}
+      local terms = toggleterm_terminal.get_all()
       local results = {}
 
-      -- Add active live ones to our result list
-      for _, term in ipairs(live_terms) do
-        uniquely_tracked[term.id] = true
+      for _, term in ipairs(terms) do
         -- If no explicit cmd was passed, default to the user's shell
         local cmd_display = term.cmd ~= "" and term.cmd or vim.o.shell
+        -- Strip out the ugly shell escape characters/echo prompts from our display title
+        local clean_cmd = cmd_display:gsub("; echo.*", "")
         table.insert(results, {
-          display = string.format("[%d] %s (Running)", term.id, cmd_display),
+          display = string.format("[%d] %s", term.id, clean_cmd),
           value = term,
         })
       end
 
-      -- 2. Inject cached finished/dead scripts into the list if they aren't already there
-      if _G.npm_terminal_cache then
-        for id, term in pairs(_G.npm_terminal_cache) do
-          if not uniquely_tracked[id] and vim.api.nvim_buf_is_valid(term.bufnr) then
-            table.insert(results, {
-              display = string.format("[%d] %s (Finished / Stopped)", term.id, term.cmd),
-              value = term,
-            })
-          end
-        end
-      end
-
       if #results == 0 then
-        vim.notify("No terminals available", vim.log.levels.INFO)
+        vim.notify("No active terminals running", vim.log.levels.INFO)
         return
       end
       pickers.new({}, {
